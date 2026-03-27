@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{ url_for('index')}}">← Voltar</a>
+    <h1>{{ titulo }}</h1>
+    <form method="POST">
+
+  <label>Nome</label>
+  <input type="text" name="nome" value="{{ cliente.nome if cliente else '' }}" required/>
+
+  <label>E-mail</label>
+  <input type="email" name="email" value="{{ cliente.email if cliente else '' }}" required/>
+
+  <label>Telefone</label>
+  <input type="text" name="telefone" value="{{ cliente.telefone if cliente else '' }}" required/>
+
+  <button type="submit">Salvar</button>
+
+</form>
+{% endblock %}

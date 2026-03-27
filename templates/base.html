@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Clientes</title>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-inner">
+                <a href="{{ url_for('index')}}" class="logo">
+                    <span>◈</span>
+                    <span>ClienteBase</span>
+                </a>
+                <a href="{{ url_for('novo')}}" class="btn btn-primary">+ Novo Cliente</a>
+            </div>
+        </header>
+        <main class="main">
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+                {% if msgs %}
+                    {% for categoria, msg in msgs %}
+                    <div class="alert alert-{{ categoria}}">{{ msg}}</div>
+                 {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+            <footer class="footer">
+        <p>ClienteBase · Projeto Flask + SQLite · Portfólio Python</p>
+    </footer>
+    </body>
+
+</html>
